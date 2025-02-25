@@ -83,5 +83,9 @@
 <script src="{{ url('dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ url('dist/js/demo.js') }}"></script>
+
+<script type="text/javascript">
+$(".sidebar-menu").tree();
+</script>
 </body>
 </html>
