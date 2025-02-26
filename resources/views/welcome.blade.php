@@ -83,9 +83,13 @@
 <script src="{{ url('dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ url('dist/js/demo.js') }}"></script>
+<!-- InputMask -->
+<script type="text/javascript" src="{{url('bower_components/input-mask/jquery.inputmask.js')}}"></script>
 
 <script type="text/javascript">
 $(".sidebar-menu").tree();
+$("[data-mask]").inputmask();
+
 </script>
 </body>
 </html>

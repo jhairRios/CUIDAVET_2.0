@@ -84,6 +84,10 @@
         <!-- Menu item: Informes -->
         <li><a href="{{ url('Informes') }}">
           <i class="fa fa-bar-chart"></i> <span>Informes</sapn></a></li>
+          <hr>
+          <!-- Menu item: Ajustes -->
+          <li><a href="{{ url('Ajustes') }}">
+            <i class="fa fa-cogs"></i> <span>Ajustes</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
