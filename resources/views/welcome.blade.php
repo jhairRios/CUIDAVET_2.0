@@ -40,13 +40,15 @@
 <body class="hold-transition skin-blue sidebar-mini login-page">
 
 
-  @if(Auth::user())
+@if(Auth::user())
   <div class="wrapper">
       @include('modulos.cabecera')
       @include('modulos.menu')
 
-      @yield('contenido')
-    </div>
+      <div class="content-wrapper">
+          @yield('contenido')
+      </div>
+  </div>
   @else
       @yield('ingresar')
   @endif
