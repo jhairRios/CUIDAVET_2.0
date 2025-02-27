@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Empleado;
+use App\Models\Ajustes;
 use Illuminate\Support\Facades\Hash;
 
 class EmpleadosController extends Controller
@@ -11,15 +12,16 @@ class EmpleadosController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function Ajustes()
     {
-        //
+        $ajustes = Ajustes::find(1);
+        return view('modulos.ajustes', compact('ajustes'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+   /* public function create()
     {
         Empleado::create([
             'nombre' => 'Jhair',
@@ -42,7 +44,7 @@ class EmpleadosController extends Controller
             'estado' => 'Activo',
 
         ]);
-    }
+    }*/
 
     /**
      * Store a newly created resource in storage.

@@ -19,7 +19,7 @@
                             <div class="col-md-3">
                                 <h2>Telefono</h2>
                                 <input type="text" class="form-control" name="telefono" required
-                                data-inputmask="'mask': '+(999) 999-9999'" data-mask>
+                                data-inputmask="'mask': '+(999) 999-9999'" data-mask value="{{$ajustes->telefono}}">
                             </div>
 
                             <div class="col-md-3">
