@@ -86,9 +86,9 @@
                 <i class="fa fa-bar-chart"></i> <span>Informes</span></a></li>
             <!-- Horizontal line separator -->
             <hr>
-            <!-- Menu item: Ajustes -->
-            <li><a href="{{ url('Ajustes') }}">
-                <i class="fa fa-cogs"></i> <span>Ajustes</span></a></li>
+           <!-- Menu item: Ajustes -->
+<li><a href="{{ route('ajustes.index') }}">
+    <i class="fa fa-cogs"></i> <span>Ajustes</span></a></li>
         </ul>
     </section>
     <!-- /.sidebar -->

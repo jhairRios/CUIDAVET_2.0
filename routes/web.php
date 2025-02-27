@@ -13,7 +13,8 @@ Route::get('/', function () {
     }
 });
 
-Route::get('Ajustes',[EmpleadosController::class, 'Ajustes'])->name('Ajustes');
+Route::get('/ajustes', [EmpleadosController::class, 'Ajustes'])->name('ajustes.index');
+Route::put('/ajustes/{id}', [EmpleadosController::class, 'update'])->name('ajustes.update');
 
 Route::get('/Clientes', function () {
     return view('modulos.clientes');

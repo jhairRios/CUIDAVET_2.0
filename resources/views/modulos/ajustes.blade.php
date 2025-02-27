@@ -8,38 +8,51 @@
         <div class="box">
             <div class="box-body">
                 @if(auth()->user()->id_rol == 1)
-                    <form>
+                    <form action="{{ route('ajustes.update', $ajustes->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
                         <div class="row">
-                            <div class="col-md-3">
+                        <div class="col-md-3">
                                 <h2>Foto</h2>
                                 <input type="file" class="form-control" name="logo">
-                                <img src="{{url('dist/img/defecto.png')}}" width="200px">
+                                @if($ajustes->logo)
+                                    <img src="{{url('storage/' . $ajustes->logo)}}" width="200px">
+                                @else
+                                    <img src="{{url('dist/img/defecto.png')}}" width="200px">
+                                @endif
                             </div>
 
                             <div class="col-md-3">
                                 <h2>Telefono</h2>
                                 <input type="text" class="form-control" name="telefono" required
-                                data-inputmask="'mask': '+(999) 999-9999'" data-mask value="{{$ajustes->telefono}}">
+                                data-inputmask="'mask': '+(999) 9999-9999'" data-mask value="{{$ajustes->telefono}}">
                             </div>
 
                             <div class="col-md-3">
                                 <h2>Direccion</h2>
-                                <input type="text" class="form-control" name="direccion" required>
+                                <input type="text" class="form-control" name="direccion" required value="{{$ajustes->direccion}}">
                             </div>
 
                             <div class="col-md-3">
                                 <h2>Moneda</h2>
-                                <input type="text" class="form-control" name="moneda" required>
+                                <select class="form-control" name="moneda" required>
+                                    @foreach($monedas as $moneda)
+                                        <option value="{{ $moneda->simbolo }}" {{ $ajustes->moneda == $moneda->simbolo ? 'selected' : '' }}>
+                                            {{ $moneda->simbolo }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <h2>Zona Horaria</h2>
                                 <select class="form-control" name="zona_horaria" required>
-                                    <option value="UTC-05:00">UTC-05:00 - Eastern Time (US & Canada), Bogota</option>
-                                    <option value="UTC-03:00">UTC-03:00 - Buenos Aires, Greenland</option>
-                                    <option value="UTC+00:00">UTC+00:00 - London, Lisbon</option>
-                                    <option value="UTC+01:00">UTC+01:00 - Berlin, Lagos</option>
-                                    <option value="UTC+08:00">UTC+08:00 - Beijing, Singapore</option>
+                                    <option value="UTC-06:00" {{$ajustes->zona_horaria == 'UTC-06:00' ? 'selected' : ''}}>UTC-06:00 - Central America</option>
+                                    <option value="UTC-05:00" {{$ajustes->zona_horaria == 'UTC-05:00' ? 'selected' : ''}}>UTC-05:00 - Eastern Time (US & Canada), Bogota</option>
+                                    <option value="UTC-03:00" {{$ajustes->zona_horaria == 'UTC-03:00' ? 'selected' : ''}}>UTC-03:00 - Buenos Aires, Greenland</option>
+                                    <option value="UTC+00:00" {{$ajustes->zona_horaria == 'UTC+00:00' ? 'selected' : ''}}>UTC+00:00 - London, Lisbon</option>
+                                    <option value="UTC+01:00" {{$ajustes->zona_horaria == 'UTC+01:00' ? 'selected' : ''}}>UTC+01:00 - Berlin, Lagos</option>
+                                    <option value="UTC+08:00" {{$ajustes->zona_horaria == 'UTC+08:00' ? 'selected' : ''}}>UTC+08:00 - Beijing, Singapore</option>
                                 </select>
                             </div>
 
