@@ -7,18 +7,23 @@
     <section class="content">
         <div class="box">
             <div class="box-body">
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 @if(auth()->user()->id_rol == 1)
                     <form action="{{ route('ajustes.update', $ajustes->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row">
-                        <div class="col-md-3">
+                            <div class="col-md-3">
                                 <h2>Foto</h2>
                                 <input type="file" class="form-control" name="logo">
                                 @if($ajustes->logo)
-                                    <img src="{{url('storage/' . $ajustes->logo)}}" width="200px">
+                                    <img src="{{ asset($ajustes->logo) }}" width="150px" alt="Imagen actual">
                                 @else
-                                    <img src="{{url('dist/img/defecto.png')}}" width="200px">
+                                    <img src="{{ asset('dist/img/defecto.png') }}" width="150px" alt="Imagen por defecto">
                                 @endif
                             </div>
 
@@ -35,10 +40,10 @@
 
                             <div class="col-md-3">
                                 <h2>Moneda</h2>
-                                <select class="form-control" name="moneda" required>
+                                <select class="form-control" name="id_moneda" required>
                                     @foreach($monedas as $moneda)
-                                        <option value="{{ $moneda->simbolo }}" {{ $ajustes->moneda == $moneda->simbolo ? 'selected' : '' }}>
-                                            {{ $moneda->simbolo }}
+                                        <option value="{{ $moneda->id }}" {{ $ajustes->id_moneda == $moneda->id ? 'selected' : '' }}>
+                                            {{ $moneda->nombre }} ({{ $moneda->simbolo }})
                                         </option>
                                     @endforeach
                                 </select>

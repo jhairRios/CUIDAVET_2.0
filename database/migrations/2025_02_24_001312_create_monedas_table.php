@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
         });
+
+        Schema::table('ajustes', function (Blueprint $table) {
+            $table->string('moneda')->nullable(); // Agrega la columna moneda
+        });
     }
 
     /**
@@ -23,5 +27,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('monedas');
+
+        Schema::table('ajustes', function (Blueprint $table) {
+            $table->dropColumn('moneda');
+        });
     }
 };

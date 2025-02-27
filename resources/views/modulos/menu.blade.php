@@ -87,8 +87,8 @@
             <!-- Horizontal line separator -->
             <hr>
            <!-- Menu item: Ajustes -->
-<li><a href="{{ route('ajustes.index') }}">
-    <i class="fa fa-cogs"></i> <span>Ajustes</span></a></li>
+            <li><a href="{{ route('ajustes.index') }}">
+                <i class="fa fa-cogs"></i> <span>Ajustes</span></a></li>
         </ul>
     </section>
     <!-- /.sidebar -->
