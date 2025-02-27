@@ -10,4 +10,6 @@ class Ajustes extends Model
     use HasFactory;
     protected $table = 'ajustes';
 
+    
+
 }
