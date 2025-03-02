@@ -67,6 +67,11 @@ Route::get('/Ventas', function () {
 Route::get('/Informes', function () {
     return view('modulos.informes');
 })->name('Informes');
+
+Route::get('/perfil', function () {
+    return view('modulos.perfil');
+})->name('perfil');
+
 //Route::get('RegistrarEmpleado', [EmpleadosController::class, 'create']);
 
 Auth::routes(['login' => false]); // Deshabilitar la ruta de login predeterminada
