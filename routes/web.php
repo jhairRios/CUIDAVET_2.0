@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\EmpleadosController;
+use App\Http\Controllers\ClientesController;
 
 Route::get('/', function () {
     if (Auth::check()) {
@@ -16,9 +17,12 @@ Route::get('/', function () {
 Route::get('/ajustes', [EmpleadosController::class, 'Ajustes'])->name('ajustes.index');
 Route::put('/ajustes/{id}', [EmpleadosController::class, 'update'])->name('ajustes.update');
 
-Route::get('/Clientes', function () {
-    return view('modulos.clientes');
-})->name('Clientes');
+Route::get('/Clientes', [ClientesController::class, 'index'])->name('Clientes');
+Route::get('/Clientes/create', [ClientesController::class, 'create'])->name('clientes.create');
+Route::post('/Clientes', [ClientesController::class, 'store'])->name('clientes.store');
+Route::get('/Clientes/{id}/edit', [ClientesController::class, 'edit'])->name('clientes.edit');
+Route::put('/Clientes/{id}', [ClientesController::class, 'update'])->name('clientes.update');
+Route::delete('/Clientes/{id}', [ClientesController::class, 'destroy'])->name('clientes.destroy');
 
 Route::get('/Empleados', [EmpleadosController::class, 'index'])->name('Empleados');
 Route::get('/Empleados/create', [EmpleadosController::class, 'create'])->name('empleados.create');
