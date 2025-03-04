@@ -16,6 +16,12 @@
                     <i class="fa fa-users"></i> <span>Clientes</span>
                 </a>
             </li>
+            <!-- Menu item: Empleados -->
+            <li>
+                <a href="{{ url('Empleados') }}">
+                    <i class="fa fa-id-badge"></i> <span>Empleados</span>
+                </a>
+            </li>
             <!-- Menu item: Mascotas -->
             <li>
                 <a href="{{ url('Mascotas') }}">

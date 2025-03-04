@@ -53,5 +53,4 @@ class EmpleadosController extends Controller
         return redirect()->route('ajustes.index')->with('success', 'Ajustes actualizados correctamente.');
     }
 
-    // Otros métodos del controlador...
 }

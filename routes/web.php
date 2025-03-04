@@ -20,6 +20,10 @@ Route::get('/Clientes', function () {
     return view('modulos.clientes');
 })->name('Clientes');
 
+Route::get('/Empleados', function () {
+    return view('modulos.empleados');
+})->name('Empleados');
+
 Route::get('/Mascotas', function () {
     return view('modulos.mascotas');
 })->name('Mascotas');
