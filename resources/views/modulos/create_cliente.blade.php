@@ -19,12 +19,57 @@
                         <input type="text" name="apellido" class="form-control" required>
                     </div>
                     <div class="form-group col-md-3">
+                        <label for="genero">Género</label>
+                        <select name="genero" class="form-control" required>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="dni">DNI</label>
+                        <input type="text" name="dni" class="form-control" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="contrasenia">Contraseña</label>
+                        <input type="password" name="contrasenia" class="form-control" required>
+                    </div>
+                    <div class="form-group col-md-3">
                         <label for="telefono">Teléfono</label>
                         <input type="text" name="telefono" class="form-control" required>
                     </div>
                     <div class="form-group col-md-3">
+                        <label for="tel_alternativo">Teléfono Alternativo</label>
+                        <input type="text" name="tel_alternativo" class="form-control">
+                    </div>
+                    <div class="form-group col-md-3">
                         <label for="correo">Correo</label>
                         <input type="email" name="correo" class="form-control" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="direccion">Dirección</label>
+                        <input type="text" name="direccion" class="form-control" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="id_nacionalidad">Nacionalidad</label>
+                        <select name="id_nacionalidad" class="form-control" required>
+                            <!-- Aquí debes agregar las opciones de nacionalidades disponibles -->
+                            <option value="1">Nacionalidad 1</option>
+                            <option value="2">Nacionalidad 2</option>
+                            <!-- Agrega más opciones según sea necesario -->
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="id_moneda">Moneda</label>
+                        <select name="id_moneda" class="form-control" required>
+                            <!-- Aquí debes agregar las opciones de monedas disponibles -->
+                            <option value="1">Moneda 1</option>
+                            <option value="2">Moneda 2</option>
+                            <!-- Agrega más opciones según sea necesario -->
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input type="hidden" name="id_rol" value="3">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="estado">Estado</label>
@@ -38,7 +83,6 @@
                             <i class="fa fa-arrow-left"></i> Regresar
                         </a>
                         <button type="submit" class="btn btn-primary">Guardar</button>
-                    </div>
                     </div>
                 </form>
             </div>

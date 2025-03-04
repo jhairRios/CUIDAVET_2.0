@@ -20,12 +20,56 @@
                         <input type="text" name="apellido" class="form-control" value="{{ $cliente->apellido }}" required>
                     </div>
                     <div class="form-group col-md-3">
+                        <label for="genero">Género</label>
+                        <select name="genero" class="form-control" required>
+                            <option value="Masculino" {{ $cliente->genero == 'Masculino' ? 'selected' : '' }}>Masculino</option>
+                            <option value="Femenino" {{ $cliente->genero == 'Femenino' ? 'selected' : '' }}>Femenino</option>
+                            <option value="Otro" {{ $cliente->genero == 'Otro' ? 'selected' : '' }}>Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="dni">DNI</label>
+                        <input type="text" name="dni" class="form-control" value="{{ $cliente->dni }}" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="contrasenia">Contraseña</label>
+                        <input type="password" name="contrasenia" class="form-control" value="{{ $cliente->contrasenia }}" required>
+                    </div>
+                    <div class="form-group col-md-3">
                         <label for="telefono">Teléfono</label>
                         <input type="text" name="telefono" class="form-control" value="{{ $cliente->telefono }}" required>
                     </div>
                     <div class="form-group col-md-3">
+                        <label for="tel_alternativo">Teléfono Alternativo</label>
+                        <input type="text" name="tel_alternativo" class="form-control" value="{{ $cliente->tel_alternativo }}">
+                    </div>
+                    <div class="form-group col-md-3">
                         <label for="correo">Correo</label>
                         <input type="email" name="correo" class="form-control" value="{{ $cliente->correo }}" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="direccion">Dirección</label>
+                        <input type="text" name="direccion" class="form-control" value="{{ $cliente->direccion }}" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="id_nacionalidad">Nacionalidad</label>
+                        <select name="id_nacionalidad" class="form-control" required>
+                            <!-- Aquí debes agregar las opciones de nacionalidades disponibles -->
+                            <option value="1" {{ $cliente->id_nacionalidad == 1 ? 'selected' : '' }}>Nacionalidad 1</option>
+                            <option value="2" {{ $cliente->id_nacionalidad == 2 ? 'selected' : '' }}>Nacionalidad 2</option>
+                            <!-- Agrega más opciones según sea necesario -->
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="id_moneda">Moneda</label>
+                        <select name="id_moneda" class="form-control" required>
+                            @foreach($monedas as $moneda)
+                                <option value="{{ $moneda->id }}" {{ $cliente->id_moneda == $moneda->id ? 'selected' : '' }}>{{ $moneda->nombre }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input type="hidden" name="id_rol" value="3">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="estado">Estado</label>

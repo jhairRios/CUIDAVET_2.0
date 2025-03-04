@@ -11,6 +11,7 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th>DNI</th>
                             <th>Nombre</th>
                             <th>Apellido</th>
                             <th>Teléfono</th>
@@ -22,6 +23,7 @@
                     <tbody>
                         @foreach($clientes as $cliente)
                             <tr>
+                                <td>{{ $cliente->dni }}</td>
                                 <td>{{ $cliente->nombre }}</td>
                                 <td>{{ $cliente->apellido }}</td>
                                 <td>{{ $cliente->telefono }}</td>
