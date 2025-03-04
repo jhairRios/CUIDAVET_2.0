@@ -3,7 +3,9 @@
 @section('contenido')
     <section class="content-header">
         <h1>Clientes</h1>
-        <a href="{{ route('clientes.create') }}" class="btn btn-primary">Agregar Cliente</a>
+        <div class="text-right">
+            <a href="{{ route('clientes.create') }}" class="btn btn-primary">Agregar Cliente</a>
+        </div>
     </section>
     <section class="content">
         <div class="box">
