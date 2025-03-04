@@ -62,6 +62,9 @@
                             </div>
 
                             <div class="col-md-12 text-right">
+                            <a href="{{ url('Inicio') }}" class="btn btn-warning">
+                            <i class="fa fa-arrow-left"></i> Regresar
+                            </a>
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                             </div>
                         </div>
