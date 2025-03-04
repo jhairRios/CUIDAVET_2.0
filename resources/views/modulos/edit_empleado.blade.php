@@ -102,7 +102,12 @@
                             <option value="Inactivo" {{ $empleado->estado == 'Inactivo' ? 'selected' : '' }}>Inactivo</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <div class="col-md-12 text-right">
+                    <a href="{{ route('Empleados') }}" class="btn btn-warning">
+                            <i class="fa fa-arrow-left"></i> Regresar
+                        </a>
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                    </div>
                 </form>
             </div>
         </div>

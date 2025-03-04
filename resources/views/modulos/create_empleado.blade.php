@@ -98,8 +98,12 @@
                             <option value="Inactivo">Inactivo</option>
                         </select>
                     </div>
+                    <div class="col-md-12 text-right">
+                        <a href="{{ route('Empleados') }}" class="btn btn-warning">
+                            <i class="fa fa-arrow-left"></i> Regresar
+                        </a>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
-                    <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>
             </div>
         </div>

@@ -3,7 +3,9 @@
 @section('contenido')
     <section class="content-header">
         <h1>Empleados</h1>
-        <a href="{{ route('empleados.create') }}" class="btn btn-primary">Agregar Empleado</a>
+        <div class="text-right">
+            <a href="{{ route('empleados.create') }}" class="btn btn-primary">Agregar Empleado</a>
+        </div>
     </section>
     <section class="content">
         <div class="box">
