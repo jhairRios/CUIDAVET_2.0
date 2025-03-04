@@ -20,9 +20,12 @@ Route::get('/Clientes', function () {
     return view('modulos.clientes');
 })->name('Clientes');
 
-Route::get('/Empleados', function () {
-    return view('modulos.empleados');
-})->name('Empleados');
+Route::get('/Empleados', [EmpleadosController::class, 'index'])->name('Empleados');
+Route::get('/Empleados/create', [EmpleadosController::class, 'create'])->name('empleados.create');
+Route::post('/Empleados', [EmpleadosController::class, 'store'])->name('empleados.store');
+Route::get('/Empleados/{id}/edit', [EmpleadosController::class, 'edit'])->name('empleados.edit');
+Route::put('/Empleados/{id}', [EmpleadosController::class, 'update'])->name('empleados.update');
+Route::delete('/Empleados/{id}', [EmpleadosController::class, 'destroy'])->name('empleados.destroy');
 
 Route::get('/Mascotas', function () {
     return view('modulos.mascotas');

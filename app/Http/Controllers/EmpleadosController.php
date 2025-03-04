@@ -21,10 +21,47 @@ class EmpleadosController extends Controller
         return view('modulos.ajustes', compact('ajustes', 'monedas'));
     }
 
+    public function index()
+    {
+        $empleados = Empleado::all();
+        return view('modulos.empleados', compact('empleados'));
+    }
+
+    public function create()
+    {
+        return view('modulos.create_empleado');
+    }
+
+    public function store(Request $request)
+    {
+        Empleado::create($request->all());
+        return redirect()->route('Empleados')->with('success', 'Empleado creado correctamente.');
+    }
+
+    public function edit($id)
+    {
+        $empleado = Empleado::findOrFail($id);
+        return view('modulos.edit_empleado', compact('empleado'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $empleado = Empleado::findOrFail($id);
+        $empleado->update($request->all());
+        return redirect()->route('Empleados')->with('success', 'Empleado actualizado correctamente.');
+    }
+
+    public function destroy($id)
+    {
+        $empleado = Empleado::findOrFail($id);
+        $empleado->delete();
+        return redirect()->route('Empleados')->with('success', 'Empleado eliminado correctamente.');
+    }
+
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function updateAjustes(Request $request, $id)
     {
         $ajustes = Ajustes::find($id);
 
