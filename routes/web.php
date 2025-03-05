@@ -55,9 +55,18 @@ Route::get('/Cajas', function () {
     return view('modulos.cajas');
 })->name('Cajas');
 
-Route::get('/Categorias', function () {
-    return view('modulos.categorias');
-})->name('Categorias');
+use App\Http\Controllers\CategoriasController;
+
+// Reemplaza la ruta existente de categorías con estas nuevas rutas
+
+// Rutas para categorías
+Route::get('/Categorias', [CategoriasController::class, 'index'])->name('Categorias');
+Route::get('/Categorias/create', [CategoriasController::class, 'create'])->name('categorias.create');
+Route::post('/Categorias', [CategoriasController::class, 'store'])->name('categorias.store');
+Route::get('/Categorias/{id}/edit', [CategoriasController::class, 'edit'])->name('categorias.edit');
+Route::put('/Categorias/{id}', [CategoriasController::class, 'update'])->name('categorias.update');
+Route::delete('/Categorias/{id}', [CategoriasController::class, 'destroy'])->name('categorias.destroy');
+
 
 Route::get('/GestorProductos', function () {
     return view('modulos.gestor_productos');
