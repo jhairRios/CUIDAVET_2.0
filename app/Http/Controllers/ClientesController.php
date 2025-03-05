@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\Moneda;
+use Illuminate\Support\Facades\Auth;
 
 class ClientesController extends Controller
 {
