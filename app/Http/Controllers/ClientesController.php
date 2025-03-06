@@ -92,4 +92,40 @@ class ClientesController extends Controller
             'correo' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
         ]);
     }
+
+    /**
+     * Buscar cliente por DNI
+     * 
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+   /**
+ * Buscar cliente por DNI
+ * 
+ * @param Request $request
+ * @return \Illuminate\Http\JsonResponse
+ */
+    public function buscarPorDni(Request $request)
+    {
+        $dni = $request->input('dni');
+        $cliente = Cliente::where('dni', $dni)->first();
+        
+        if ($cliente) {
+            return response()->json([
+                'success' => true,
+                'cliente' => [
+                    'id' => $cliente->id,
+                    'nombre' => $cliente->nombre,
+                    'apellido' => $cliente->apellido,
+                    'nombre_completo' => $cliente->nombre . ' ' . $cliente->apellido,
+                    'dni' => $cliente->dni
+                ]
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Cliente no encontrado'
+            ]);
+        }
+    }
 }

@@ -23,6 +23,7 @@ Route::post('/Clientes', [ClientesController::class, 'store'])->name('clientes.s
 Route::get('/Clientes/{id}/edit', [ClientesController::class, 'edit'])->name('clientes.edit');
 Route::put('/Clientes/{id}', [ClientesController::class, 'update'])->name('clientes.update');
 Route::delete('/Clientes/{id}', [ClientesController::class, 'destroy'])->name('clientes.destroy');
+Route::get('/clientes/buscar-por-dni', [ClientesController::class, 'buscarPorDni'])->name('clientes.buscarPorDni');
 
 Route::get('/Empleados', [EmpleadosController::class, 'index'])->name('Empleados');
 Route::get('/Empleados/create', [EmpleadosController::class, 'create'])->name('empleados.create');
@@ -31,9 +32,17 @@ Route::get('/Empleados/{id}/edit', [EmpleadosController::class, 'edit'])->name('
 Route::put('/Empleados/{id}', [EmpleadosController::class, 'update'])->name('empleados.update');
 Route::delete('/Empleados/{id}', [EmpleadosController::class, 'destroy'])->name('empleados.destroy');
 
-Route::get('/Mascotas', function () {
-    return view('modulos.mascotas');
-})->name('Mascotas');
+use App\Http\Controllers\MascotasController;
+
+// Rutas para mascotas
+// Rutas para mascotas
+Route::get('/Mascotas', [MascotasController::class, 'index'])->name('mascotas.index');
+Route::get('/Mascotas/create', [MascotasController::class, 'create'])->name('mascotas.create');
+Route::post('/Mascotas', [MascotasController::class, 'store'])->name('mascotas.store');
+Route::get('/Mascotas/{id}/edit', [MascotasController::class, 'edit'])->name('mascotas.edit');
+Route::put('/Mascotas/{id}', [MascotasController::class, 'update'])->name('mascotas.update');
+Route::delete('/Mascotas/{id}', [MascotasController::class, 'destroy'])->name('mascotas.destroy');
+Route::get('/Mascotas/buscar-cliente', [MascotasController::class, 'buscarCliente'])->name('mascotas.buscarCliente');
 
 Route::get('/Usuarios', function () {
     return view('modulos.usuarios');
