@@ -37,12 +37,16 @@
                     </div>
                     <div class="form-group col-md-3">
                         <label for="contrasenia">Contraseña</label>
-                        <input type="password" name="contrasenia" class="form-control">
+                        <input type="password" name="contrasenia" class="form-control" value="{{ $empleado->contrasenia }}">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="id_rol">Rol</label>
                         <select name="id_rol" class="form-control" required>
-                            <!-- Opciones de roles -->
+                            @foreach($roles as $rol)
+                                <option value="{{ $rol->id }}" {{ $empleado->id_rol == $rol->id ? 'selected' : '' }}>
+                                    {{ $rol->nombre }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group col-md-3">
@@ -70,7 +74,11 @@
                     <div class="form-group col-md-3">
                         <label for="id_departamento">Departamento</label>
                         <select name="id_departamento" class="form-control" required>
-                            <!-- Opciones de departamentos -->
+                            @foreach($departamentos as $departamento)
+                                <option value="{{ $departamento->id }}" {{ $empleado->id_departamento == $departamento->id ? 'selected' : '' }}>
+                                    {{ $departamento->nombre }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group col-md-3">
@@ -92,7 +100,11 @@
                     <div class="form-group col-md-3">
                         <label for="id_moneda">Moneda</label>
                         <select name="id_moneda" class="form-control" required>
-                            <!-- Opciones de monedas -->
+                            @foreach($monedas as $moneda)
+                                <option value="{{ $moneda->id }}" {{ $empleado->id_moneda == $moneda->id ? 'selected' : '' }}>
+                                    {{ $moneda->nombre }} ({{ $moneda->simbolo }})
+                                </option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group col-md-3">
@@ -103,7 +115,7 @@
                         </select>
                     </div>
                     <div class="col-md-12 text-right">
-                    <a href="{{ route('Empleados') }}" class="btn btn-warning">
+                        <a href="{{ route('empleados.index') }}" class="btn btn-warning">
                             <i class="fa fa-arrow-left"></i> Regresar
                         </a>
                         <button type="submit" class="btn btn-primary">Actualizar</button>

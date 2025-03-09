@@ -65,14 +65,43 @@ class EmpleadosController extends Controller
         $monedas = Moneda::all();
         $departamentos = Departamento::all();
         $roles = Rol::all();
-        return view('empleados.edit', compact('empleado', 'monedas', 'departamentos', 'roles'));
+        return view('modulos.edit_empleado', compact('empleado', 'monedas', 'departamentos', 'roles'));
     }
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'telefono' => 'required',
+            'correo' => 'required|email',
+            'id_rol' => 'required',
+            'f_nacimiento' => 'required|date',
+            'genero' => 'required',
+            'fecha_contratacion' => 'required|date',
+            'id_departamento' => 'required',
+            'dias_laborales' => 'required',
+            'turno' => 'required',
+            'salario' => 'required|numeric',
+            'id_moneda' => 'required',
+            'estado' => 'required',
+        ]);
+
         $empleado = Empleado::findOrFail($id);
-        $empleado->update($request->all());
-        return redirect()->route('Empleados')->with('success', 'Empleado actualizado correctamente.');
+
+        $data = $request->all();
+
+        // Si la contraseña no está vacía, actualizarla
+        if (!empty($data['contrasenia'])) {
+            $data['contrasenia'] = Hash::make($data['contrasenia']);
+        } else {
+            // Si la contraseña está vacía, eliminarla del array de datos
+            unset($data['contrasenia']);
+        }
+
+        $empleado->update($data);
+
+        return redirect()->route('empleados.index')->with('success', 'Empleado actualizado correctamente.');
     }
 
     public function destroy($id)
