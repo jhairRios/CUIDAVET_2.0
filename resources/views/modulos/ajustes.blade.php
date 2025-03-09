@@ -2,13 +2,13 @@
 
 @section('contenido')
     <section class="content-header">
-        <h1>Cajas</h1>
+        <h1>Ajustes</h1>
     </section>
     <section class="content table-responsive">
         <div class="box">
             <div class="box-body">
                 
-            @if(session('success'))
+                @if(session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
                     </div>
@@ -78,6 +78,131 @@
                             No se encontraron ajustes.
                         </div>
                     @endif
+                <hr>
+                    <!-- Sección para Monedas -->
+                    <div class="section">
+                        <h2>Monedas</h2>
+                        <form action="{{ route('monedas.store') }}" method="POST">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" name="nombre" placeholder="Nombre de la moneda" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" name="simbolo" placeholder="Símbolo de la moneda" required>
+                                </div>
+                                <div class="col-md-4 text-right">
+                                    <button type="submit" class="btn btn-primary">Agregar Moneda</button>
+                                </div>
+                            </div>
+                        </form>
+                        <table class="table table-bordered table-striped mt-3">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Símbolo</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($monedas as $moneda)
+                                    <tr>
+                                        <td>{{ $moneda->id }}</td>
+                                        <td>{{ $moneda->nombre }}</td>
+                                        <td>{{ $moneda->simbolo }}</td>
+                                        <td>
+                                            <form action="{{ route('monedas.destroy', $moneda->id) }}" method="POST" style="display:inline-block;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                <hr>
+                    <!-- Sección para Roles -->
+                    <div class="section">
+                        <h2>Roles</h2>
+                        <form action="{{ route('roles.store') }}" method="POST">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="nombre" placeholder="Nombre del rol" required>
+                                </div>
+                                <div class="col-md-4 text-right">
+                                    <button type="submit" class="btn btn-primary">Agregar Rol</button>
+                                </div>
+                            </div>
+                        </form>
+                        <table class="table table-bordered table-striped mt-3">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($roles as $rol)
+                                    <tr>
+                                        <td>{{ $rol->id }}</td>
+                                        <td>{{ $rol->nombre }}</td>
+                                        <td>
+                                            <form action="{{ route('roles.destroy', $rol->id) }}" method="POST" style="display:inline-block;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                <hr>
+                    <!-- Sección para Departamentos -->
+                    <div class="section">
+                        <h2>Departamentos</h2>
+                        <form action="{{ route('departamentos.store') }}" method="POST">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="nombre" placeholder="Nombre del departamento" required>
+                                </div>
+                                <div class="col-md-4 text-right">
+                                    <button type="submit" class="btn btn-primary">Agregar Departamento</button>
+                                </div>
+                            </div>
+                        </form>
+                        <table class="table table-bordered table-striped mt-3">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($departamentos as $departamento)
+                                    <tr>
+                                        <td>{{ $departamento->id }}</td>
+                                        <td>{{ $departamento->nombre }}</td>
+                                        <td>
+                                            <form action="{{ route('departamentos.destroy', $departamento->id) }}" method="POST" style="display:inline-block;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 @endif
             </div>
         </div>

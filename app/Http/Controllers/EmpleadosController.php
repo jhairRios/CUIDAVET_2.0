@@ -6,14 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\Empleado;
 use App\Models\Ajustes;
 use App\Models\Moneda;
+use App\Models\Departamento;
+use App\Models\Rol;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class EmpleadosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function Ajustes()
     {
         $ajustes = Ajustes::find(1);
@@ -29,19 +28,44 @@ class EmpleadosController extends Controller
 
     public function create()
     {
-        return view('modulos.create_empleado');
+        $monedas = Moneda::all();
+        $departamentos = Departamento::all();
+        $roles = Rol::all();
+        return view('modulos.create_empleado', compact('monedas', 'departamentos', 'roles'));
     }
 
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'telefono' => 'required',
+            'correo' => 'required|email',
+            'contrasenia' => 'required',
+            'id_rol' => 'required',
+            'f_nacimiento' => 'required|date',
+            'genero' => 'required',
+            'fecha_contratacion' => 'required|date',
+            'id_departamento' => 'required',
+            'dias_laborales' => 'required',
+            'turno' => 'required',
+            'salario' => 'required|numeric',
+            'id_moneda' => 'required',
+            'estado' => 'required',
+        ]);
+
         Empleado::create($request->all());
-        return redirect()->route('Empleados')->with('success', 'Empleado creado correctamente.');
+
+        return redirect()->route('Empleados')->with('success', 'Empleado creado exitosamente.');
     }
 
     public function edit($id)
     {
         $empleado = Empleado::findOrFail($id);
-        return view('modulos.edit_empleado', compact('empleado'));
+        $monedas = Moneda::all();
+        $departamentos = Departamento::all();
+        $roles = Rol::all();
+        return view('empleados.edit', compact('empleado', 'monedas', 'departamentos', 'roles'));
     }
 
     public function update(Request $request, $id)
@@ -58,9 +82,6 @@ class EmpleadosController extends Controller
         return redirect()->route('Empleados')->with('success', 'Empleado eliminado correctamente.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function updateAjustes(Request $request, $id)
     {
         $ajustes = Ajustes::find($id);
@@ -89,5 +110,4 @@ class EmpleadosController extends Controller
 
         return redirect()->route('ajustes.index')->with('success', 'Ajustes actualizados correctamente.');
     }
-
 }

@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\EmpleadosController;
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\MonedaController;
+use App\Http\Controllers\RolController;
+use App\Http\Controllers\DepartamentoController;
+use App\Http\Controllers\AjustesController;
 
 Route::get('/', function () {
     if (Auth::check()) {
@@ -14,8 +18,8 @@ Route::get('/', function () {
     }
 });
 
-Route::get('/ajustes', [EmpleadosController::class, 'Ajustes'])->name('ajustes.index');
-Route::put('/ajustes/{id}', [EmpleadosController::class, 'update'])->name('ajustes.update');
+Route::get('/ajustes', [AjustesController::class, 'index'])->name('ajustes.index');
+Route::put('/ajustes/{id}', [AjustesController::class, 'update'])->name('ajustes.update');
 
 Route::get('/Clientes', [ClientesController::class, 'index'])->name('Clientes');
 Route::get('/Clientes/create', [ClientesController::class, 'create'])->name('clientes.create');
@@ -35,7 +39,6 @@ Route::delete('/Empleados/{id}', [EmpleadosController::class, 'destroy'])->name(
 use App\Http\Controllers\MascotasController;
 
 // Rutas para mascotas
-// Rutas para mascotas
 Route::get('/Mascotas', [MascotasController::class, 'index'])->name('mascotas.index');
 Route::get('/Mascotas/create', [MascotasController::class, 'create'])->name('mascotas.create');
 Route::post('/Mascotas', [MascotasController::class, 'store'])->name('mascotas.store');
@@ -44,9 +47,9 @@ Route::put('/Mascotas/{id}', [MascotasController::class, 'update'])->name('masco
 Route::delete('/Mascotas/{id}', [MascotasController::class, 'destroy'])->name('mascotas.destroy');
 Route::get('/Mascotas/buscar-cliente', [MascotasController::class, 'buscarCliente'])->name('mascotas.buscarCliente');
 
-Route::get('/Usuarios', function () {
-    return view('modulos.usuarios');
-})->name('Usuarios');
+Route::get('/Proveedores', function () {
+    return view('modulos.proveedores');
+})->name('proveedores');
 
 Route::get('/Veterinarios', function () {
     return view('modulos.veterinarios');
@@ -113,3 +116,8 @@ Route::post('/loginempleados', [LoginController::class, 'login'])->name('loginem
 Route::get('/Inicio', function () {
     return view('modulos.Inicio');
 })->name('Inicio');
+
+Route::resource('monedas', MonedaController::class)->only(['store', 'destroy']);
+Route::resource('roles', RolController::class)->only(['store', 'destroy']);
+Route::resource('departamentos', DepartamentoController::class)->only(['store', 'destroy']);
+Route::resource('empleados', EmpleadosController::class);

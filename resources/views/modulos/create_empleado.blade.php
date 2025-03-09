@@ -41,7 +41,9 @@
                     <div class="form-group col-md-3">
                         <label for="id_rol">Rol</label>
                         <select name="id_rol" class="form-control" required>
-                            <!-- Opciones de roles -->
+                            @foreach($roles as $rol)
+                                <option value="{{ $rol->id }}">{{ $rol->nombre }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group col-md-3">
@@ -66,7 +68,9 @@
                     <div class="form-group col-md-3">
                         <label for="id_departamento">Departamento</label>
                         <select name="id_departamento" class="form-control" required>
-                            <!-- Opciones de departamentos -->
+                            @foreach($departamentos as $departamento)
+                                <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group col-md-3">
@@ -88,7 +92,9 @@
                     <div class="form-group col-md-3">
                         <label for="id_moneda">Moneda</label>
                         <select name="id_moneda" class="form-control" required>
-                            <!-- Opciones de monedas -->
+                            @foreach($monedas as $moneda)
+                                <option value="{{ $moneda->id }}">{{ $moneda->nombre }} ({{ $moneda->simbolo }})</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group col-md-3">
