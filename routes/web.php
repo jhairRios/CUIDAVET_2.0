@@ -10,6 +10,8 @@ use App\Http\Controllers\RolController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\AjustesController;
 
+Route::get('RegistrarEmpleado', [EmpleadosController::class, 'create']);
+
 Route::get('/', function () {
     if (Auth::check()) {
         return redirect()->route('Inicio');

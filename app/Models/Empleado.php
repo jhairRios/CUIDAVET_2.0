@@ -29,7 +29,7 @@ class Empleado extends Authenticatable
         'f_nacimiento',
         'genero',
         'foto',
-        'fecha_contratacion',
+        'f_contratacion',
         'id_departamento',
         'dias_laborales',
         'turno',

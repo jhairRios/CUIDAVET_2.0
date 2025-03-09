@@ -28,11 +28,34 @@ class EmpleadosController extends Controller
 
     public function create()
     {
+        
         $monedas = Moneda::all();
         $departamentos = Departamento::all();
         $roles = Rol::all();
         return view('modulos.create_empleado', compact('monedas', 'departamentos', 'roles'));
-    }
+        /*
+        Empleado::create([
+            'nombre' => 'Jhair',
+            'apellido' => 'Rios',
+            'telefono' => '96595294',
+            'tel_alternativo' => '',
+            'direccion' => 'Barrio El Centro',
+            'correo' => 'jhair@gmail.com',
+            'contrasenia' => Hash::make('1234'),
+            'id_rol' => 1,
+            'f_nacimiento' => '1999-12-12',
+            'genero' => 'M',
+            'foto' => '',
+            'f_contratacion' => '2021-12-12',
+            'id_departamento' => 1,
+            'dias_laborales' => 'Lunes,Martes,Miércoles',
+            'turno' => 'Tarde',
+            'salario' => 1000,
+            'id_moneda' => 1,
+            'estado' => 1,
+
+        ]);*/
+        }
 
     public function store(Request $request)
     {
