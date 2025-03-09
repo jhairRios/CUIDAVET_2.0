@@ -6,10 +6,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
 class Empleado extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
@@ -29,7 +29,7 @@ class Empleado extends Authenticatable
         'f_nacimiento',
         'genero',
         'foto',
-        'f_contratacion',
+        'fecha_contratacion',
         'id_departamento',
         'dias_laborales',
         'turno',
@@ -65,5 +65,10 @@ class Empleado extends Authenticatable
     public function username()
     {
         return 'correo';
+    }
+
+    public function moneda()
+    {
+        return $this->belongsTo(Moneda::class, 'id_moneda');
     }
 }

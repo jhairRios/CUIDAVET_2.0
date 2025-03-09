@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group col-md-3">
                         <label for="contrasenia">Contraseña</label>
-                        <input type="password" name="contrasenia" class="form-control" value="{{ $empleado->contrasenia }}">
+                        <input type="password" name="contrasenia" class="form-control">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="id_rol">Rol</label>
@@ -95,13 +95,13 @@
                     </div>
                     <div class="form-group col-md-3">
                         <label for="salario">Salario</label>
-                        <input type="number" name="salario" class="form-control" value="{{ $empleado->salario }}" required>
+                        <input type="number" name="salario" class="form-control" value="{{ $empleado->salario }}" placeholder="{{ $empleado->moneda ? $empleado->moneda->simbolo : '' }}" required>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="id_moneda">Moneda</label>
-                        <select name="id_moneda" class="form-control" required>
+                        <select name="id_moneda" class="form-control" id="id_moneda" required>
                             @foreach($monedas as $moneda)
-                                <option value="{{ $moneda->id }}" {{ $empleado->id_moneda == $moneda->id ? 'selected' : '' }}>
+                                <option value="{{ $moneda->id }}" data-simbolo="{{ $moneda->simbolo }}" {{ $empleado->id_moneda == $moneda->id ? 'selected' : '' }}>
                                     {{ $moneda->nombre }} ({{ $moneda->simbolo }})
                                 </option>
                             @endforeach
@@ -124,4 +124,25 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const monedaSelect = document.getElementById('id_moneda');
+        const salarioInput = document.querySelector('input[name="salario"]');
+
+        // Establecer el símbolo de la moneda al cargar la página
+        const selectedOption = monedaSelect.options[monedaSelect.selectedIndex];
+        const simbolo = selectedOption.getAttribute('data-simbolo');
+        salarioInput.placeholder = simbolo;
+
+        // Actualizar el símbolo de la moneda cuando se cambia la selección
+        monedaSelect.addEventListener('change', function () {
+            const selectedOption = monedaSelect.options[monedaSelect.selectedIndex];
+            const simbolo = selectedOption.getAttribute('data-simbolo');
+            salarioInput.placeholder = simbolo;
+        });
+    });
+</script>
 @endsection
