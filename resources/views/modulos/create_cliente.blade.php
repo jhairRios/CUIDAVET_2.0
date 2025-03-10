@@ -62,10 +62,9 @@
                     <div class="form-group col-md-3">
                         <label for="id_moneda">Moneda</label>
                         <select name="id_moneda" class="form-control" required>
-                            <!-- Aquí debes agregar las opciones de monedas disponibles -->
-                            <option value="1">Moneda 1</option>
-                            <option value="2">Moneda 2</option>
-                            <!-- Agrega más opciones según sea necesario -->
+                            @foreach($monedas as $moneda)
+                                <option value="{{ $moneda->id }}">{{ $moneda->nombre }} ({{ $moneda->simbolo }})</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group col-md-3">

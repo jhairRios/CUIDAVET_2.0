@@ -7,9 +7,9 @@
             <a href="{{ route('clientes.create') }}" class="btn btn-primary">Agregar Cliente</a>
         </div>
     </section>
-    <section class="content">
+    <section class="content table-responsive">
         <div class="box">
-            <div class="box-body">
+            <div class="box-body table-responsive">
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>

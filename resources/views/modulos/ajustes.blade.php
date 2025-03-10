@@ -6,7 +6,7 @@
     </section>
     <section class="content table-responsive">
         <div class="box">
-            <div class="box-body">
+            <div class="box-body table-responsive">
                 
                 @if(session('success'))
                     <div class="alert alert-success">
@@ -18,7 +18,7 @@
                         {{ session('error') }}
                     </div>
                 @endif
-                @if(auth()->user()->id_rol == 1)
+                
                     @if(isset($ajustes))
                         <form action="{{ route('ajustes.update', $ajustes->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -69,6 +69,7 @@
                                 </div>
 
                                 <div class="col-md-12 text-right">
+                                    <br>
                                     <button type="submit" class="btn btn-primary">Guardar</button>
                                 </div>
                             </div>
@@ -92,6 +93,7 @@
                                     <input type="text" class="form-control" name="simbolo" placeholder="Símbolo de la moneda" required>
                                 </div>
                                 <div class="col-md-4 text-right">
+                                    <br>
                                     <button type="submit" class="btn btn-primary">Agregar Moneda</button>
                                 </div>
                             </div>
@@ -100,7 +102,6 @@
                         <table class="table table-bordered table-striped mt-3">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Símbolo</th>
                                     <th>Acciones</th>
@@ -109,7 +110,6 @@
                             <tbody>
                                 @foreach($monedas as $moneda)
                                     <tr>
-                                        <td>{{ $moneda->id }}</td>
                                         <td>{{ $moneda->nombre }}</td>
                                         <td>{{ $moneda->simbolo }}</td>
                                         <td>
@@ -135,6 +135,7 @@
                                     <input type="text" class="form-control" name="nombre" placeholder="Nombre del rol" required>
                                 </div>
                                 <div class="col-md-4 text-right">
+                                    <br>
                                     <button type="submit" class="btn btn-primary">Agregar Rol</button>
                                 </div>
                             </div>
@@ -143,7 +144,6 @@
                         <table class="table table-bordered table-striped mt-3">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -151,7 +151,6 @@
                             <tbody>
                                 @foreach($roles as $rol)
                                     <tr>
-                                        <td>{{ $rol->id }}</td>
                                         <td>{{ $rol->nombre }}</td>
                                         <td>
                                             <form action="{{ route('roles.destroy', $rol->id) }}" method="POST" style="display:inline-block;">
@@ -176,6 +175,7 @@
                                     <input type="text" class="form-control" name="nombre" placeholder="Nombre del departamento" required>
                                 </div>
                                 <div class="col-md-4 text-right">
+                                    <br>
                                     <button type="submit" class="btn btn-primary">Agregar Departamento</button>
                                 </div>
                             </div>
@@ -184,7 +184,6 @@
                         <table class="table table-bordered table-striped mt-3">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -192,7 +191,6 @@
                             <tbody>
                                 @foreach($departamentos as $departamento)
                                     <tr>
-                                        <td>{{ $departamento->id }}</td>
                                         <td>{{ $departamento->nombre }}</td>
                                         <td>
                                             <form action="{{ route('departamentos.destroy', $departamento->id) }}" method="POST" style="display:inline-block;">
@@ -206,7 +204,53 @@
                             </tbody>
                         </table>
                     </div>
-                @endif
+
+                    <hr>
+                    <!-- Sección para Nacionalidades -->
+                    <div class="section">
+                        <h2>Nacionalidades</h2>
+                        <form action="{{ route('nacionalidades.store') }}" method="POST">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="nombre" placeholder="Nombre de la nacionalidad" required>
+                                </div>
+                                <div class="col-md-4 text-right">
+                                    <br>
+                                    <button type="submit" class="btn btn-primary">Agregar Nacionalidad</button>
+                                </div>
+                            </div>
+                        </form>
+                        <br>
+                        <table class="table table-bordered table-striped mt-3">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if(isset($nacionalidades) && count($nacionalidades) > 0)
+                                    @foreach($nacionalidades as $nacionalidad)
+                                        <tr>
+                                            <td>{{ $nacionalidad->nombre }}</td>
+                                            <td>
+                                                <form action="{{ route('nacionalidades.destroy', $nacionalidad->id) }}" method="POST" style="display:inline-block;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <tr>
+                                        <td colspan="2">No se encontraron nacionalidades.</td>
+                                    </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
             </div>
         </div>
     </section>

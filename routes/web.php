@@ -9,6 +9,7 @@ use App\Http\Controllers\MonedaController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\AjustesController;
+use App\Http\Controllers\NacionalidadesController;
 
 Route::get('RegistrarEmpleado', [EmpleadosController::class, 'create']);
 
@@ -49,8 +50,6 @@ Route::put('/Mascotas/{id}', [MascotasController::class, 'update'])->name('masco
 Route::delete('/Mascotas/{id}', [MascotasController::class, 'destroy'])->name('mascotas.destroy');
 Route::get('/Mascotas/buscar-cliente', [MascotasController::class, 'buscarCliente'])->name('mascotas.buscarCliente');
 
-
-
 Route::get('/Veterinarios', function () {
     return view('modulos.veterinarios');
 })->name('Veterinarios');
@@ -78,7 +77,6 @@ Route::post('/Categorias', [CategoriasController::class, 'store'])->name('catego
 Route::get('/Categorias/{id}/edit', [CategoriasController::class, 'edit'])->name('categorias.edit');
 Route::put('/Categorias/{id}', [CategoriasController::class, 'update'])->name('categorias.update');
 Route::delete('/Categorias/{id}', [CategoriasController::class, 'destroy'])->name('categorias.destroy');
-
 
 Route::get('/GestorProductos', function () {
     return view('modulos.gestor_productos');
@@ -117,6 +115,7 @@ Route::get('/Inicio', function () {
     return view('modulos.Inicio');
 })->name('Inicio');
 
+Route::resource('nacionalidades', NacionalidadesController::class)->only(['store', 'destroy']);
 Route::resource('monedas', MonedaController::class)->only(['store', 'destroy']);
 Route::resource('roles', RolController::class)->only(['store', 'destroy']);
 Route::resource('departamentos', DepartamentoController::class)->only(['store', 'destroy']);

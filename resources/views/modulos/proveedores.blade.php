@@ -8,8 +8,8 @@
         </div>
     </section>
     <section class="content table-responsive">
-        <div class="box">
-            <div class="box-body">
+        <div class="box ">
+            <div class="box-body table-responsive">
                 @if(session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}

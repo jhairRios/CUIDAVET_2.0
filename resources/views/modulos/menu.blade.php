@@ -28,12 +28,6 @@
                     <i class="fa fa-paw"></i> <span>Mascotas</span>
                 </a>
             </li>
-            <!-- Menu item: Usuarios -->
-            <li>
-                <a href="{{ url('Usuarios') }}">
-                    <i class="fa fa-user"></i> <span>Usuarios</span>
-                </a>
-            </li>
             <!-- Menu item: Clinica with sub-menu -->
             <li class="treeview">
                 <a href="#">
@@ -81,6 +75,12 @@
                         <i class="fa fa-archive"></i> Inventario</a></li>
                 </ul>
             </li>
+            <!-- Menu item: Pproveedores -->
+            <li>
+                <a href="{{ url('Proveedores') }}">
+                    <i class="fa fa-user"></i> <span>Proveedores</span>
+                </a>
+            </li>
             <!-- Menu item: Compras -->
             <li><a href="{{ url('Compras') }}">
                 <i class="fa fa-shopping-cart"></i> <span>Compras</span></a></li>
@@ -91,10 +91,13 @@
             <li><a href="{{ url('Informes') }}">
                 <i class="fa fa-bar-chart"></i> <span>Informes</span></a></li>
             <!-- Horizontal line separator -->
-            <hr>
-           <!-- Menu item: Ajustes -->
-            <li><a href="{{ route('ajustes.index') }}">
-                <i class="fa fa-cogs"></i> <span>Ajustes</span></a></li>
+            @if(auth()->user()->id_rol == 1)
+                <hr>
+            <!-- Menu item: Ajustes -->
+                <li><a href="{{ route('ajustes.index') }}">
+                    <i class="fa fa-cogs"></i> <span>Ajustes</span></a>
+                </li>
+            @endif
         </ul>
     </section>
     <!-- /.sidebar -->

@@ -41,12 +41,13 @@
 
                     <div class="col-md-3">
                         <h2>Contraseña</h2>
-                        <input type="password" class="form-control" name="password" value="********" readonly>
+                        <input type="password" class="form-control" name="password" value="****" readonly>
                     </div>
 
                     <div class="col-md-12 text-right">
-                                <button type="submit" class="btn btn-primary">Guardar</button>
-                            </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
                 </div>
             </div>
         </div>

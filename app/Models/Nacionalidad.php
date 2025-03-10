@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Departamento extends Model
+class Nacionalidad extends Model
 {
     use HasFactory;
 
@@ -13,5 +13,5 @@ class Departamento extends Model
         'nombre',
     ];
 
-    protected $table = 'departamentos'; // Asegúrate de que el nombre de la tabla sea correcto
+    protected $table = 'nacionalidades'; // Asegúrate de que el nombre de la tabla sea correcto
 }
