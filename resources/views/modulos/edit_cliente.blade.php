@@ -54,23 +54,20 @@
                     <div class="form-group col-md-3">
                         <label for="id_nacionalidad">Nacionalidad</label>
                         <select name="id_nacionalidad" class="form-control" required>
-                            <!-- Aquí debes agregar las opciones de nacionalidades disponibles -->
-                            <option value="1" {{ $cliente->id_nacionalidad == 1 ? 'selected' : '' }}>Nacionalidad 1</option>
-                            <option value="2" {{ $cliente->id_nacionalidad == 2 ? 'selected' : '' }}>Nacionalidad 2</option>
-                            <!-- Agrega más opciones según sea necesario -->
+                            @foreach($nacionalidades as $nacionalidad)
+                                <option value="{{ $nacionalidad->id }}">{{ $nacionalidad->nombre }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="id_moneda">Moneda</label>
                         <select name="id_moneda" class="form-control" required>
                             @foreach($monedas as $moneda)
-                                <option value="{{ $moneda->id }}" {{ $cliente->id_moneda == $moneda->id ? 'selected' : '' }}>{{ $moneda->nombre }}</option>
+                                <option value="{{ $moneda->id }}">{{ $moneda->nombre }} ({{ $moneda->simbolo }})</option>
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group col-md-3">
-                        <input type="hidden" name="id_rol" value="3">
-                    </div>
+
                     <div class="form-group col-md-3">
                         <label for="estado">Estado</label>
                         <select name="estado" class="form-control" required>
@@ -78,6 +75,7 @@
                             <option value="Inactivo" {{ $cliente->estado == 'Inactivo' ? 'selected' : '' }}>Inactivo</option>
                         </select>
                     </div>
+                    <br>
                     <div class="col-md-12 text-right">
                         <a href="{{ route('Clientes') }}" class="btn btn-warning">
                             <i class="fa fa-arrow-left"></i> Regresar

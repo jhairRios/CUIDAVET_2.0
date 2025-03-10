@@ -32,15 +32,16 @@
                 <span class="hidden-xs">{{ auth()->user()->nombre }} {{ auth()->user()->apellido }}</span>
             </a>
             <ul class="dropdown-menu">
-
               <!-- Menu Footer-->
               <li class="user-footer">
-                <div class="pull-left">
-                  <a href="{{ route('perfil') }}" class="btn btn-primary btn-flat">Perfil</a>
-                </div>
-                <div class="pull-right">
-                  <a href="{{ route('logout')}}" class="btn btn-danger btn-flat" 
-                      onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</a>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <a href="{{ route('perfil') }}" class="btn btn-primary btn-flat btn-block">Perfil</a>
+                  </div>
+                  <div class="col-xs-12">
+                    <a href="{{ route('logout')}}" class="btn btn-danger btn-flat btn-block" 
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</a>
+                  </div>
                 </div>
                 <form method="post" id="logout-form" action="{{route('logout')}}">
                   @csrf

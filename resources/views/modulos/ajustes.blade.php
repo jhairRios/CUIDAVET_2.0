@@ -108,19 +108,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($monedas as $moneda)
+                                @if(isset($monedas) && count($monedas) > 0)
+                                    @foreach($monedas as $moneda)
+                                        <tr>
+                                            <td>{{ $moneda->nombre }}</td>
+                                            <td>{{ $moneda->simbolo }}</td>
+                                            <td>
+                                                <form action="{{ route('monedas.destroy', $moneda->id) }}" method="POST" style="display:inline-block;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
                                     <tr>
-                                        <td>{{ $moneda->nombre }}</td>
-                                        <td>{{ $moneda->simbolo }}</td>
-                                        <td>
-                                            <form action="{{ route('monedas.destroy', $moneda->id) }}" method="POST" style="display:inline-block;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Eliminar</button>
-                                            </form>
-                                        </td>
+                                        <td colspan="2">No se encontraron monedas.</td>
                                     </tr>
-                                @endforeach
+                                @endif
+                                
                             </tbody>
                         </table>
                     </div>
@@ -149,18 +156,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($roles as $rol)
+                                @if(isset($roles) && count($roles) > 0)
+                                    @foreach($roles as $rol)
+                                        <tr>
+                                            <td>{{ $rol->nombre }}</td>
+                                            <td>
+                                                <form action="{{ route('roles.destroy', $rol->id) }}" method="POST" style="display:inline-block;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
                                     <tr>
-                                        <td>{{ $rol->nombre }}</td>
-                                        <td>
-                                            <form action="{{ route('roles.destroy', $rol->id) }}" method="POST" style="display:inline-block;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Eliminar</button>
-                                            </form>
-                                        </td>
+                                        <td colspan="2">No se encontraron roles.</td>
                                     </tr>
-                                @endforeach
+                                @endif
+                                
                             </tbody>
                         </table>
                     </div>
@@ -189,18 +203,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($departamentos as $departamento)
+                                @if(isset($departamentos) && count($departamentos) > 0)
+                                    @foreach($departamentos as $departamento)
+                                        <tr>
+                                            <td>{{ $departamento->nombre }}</td>
+                                            <td>
+                                                <form action="{{ route('departamentos.destroy', $departamento->id) }}" method="POST" style="display:inline-block;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
                                     <tr>
-                                        <td>{{ $departamento->nombre }}</td>
-                                        <td>
-                                            <form action="{{ route('departamentos.destroy', $departamento->id) }}" method="POST" style="display:inline-block;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Eliminar</button>
-                                            </form>
-                                        </td>
+                                        <td colspan="2">No se encontraron departamentos.</td>
                                     </tr>
-                                @endforeach
+                                @endif
+                                
                             </tbody>
                         </table>
                     </div>

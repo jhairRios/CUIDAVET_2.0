@@ -53,12 +53,12 @@
                     <div class="form-group col-md-3">
                         <label for="id_nacionalidad">Nacionalidad</label>
                         <select name="id_nacionalidad" class="form-control" required>
-                            <!-- Aquí debes agregar las opciones de nacionalidades disponibles -->
-                            <option value="1">Nacionalidad 1</option>
-                            <option value="2">Nacionalidad 2</option>
-                            <!-- Agrega más opciones según sea necesario -->
+                            @foreach($nacionalidades as $nacionalidad)
+                                <option value="{{ $nacionalidad->id }}">{{ $nacionalidad->nombre }}</option>
+                            @endforeach
                         </select>
                     </div>
+
                     <div class="form-group col-md-3">
                         <label for="id_moneda">Moneda</label>
                         <select name="id_moneda" class="form-control" required>
@@ -67,9 +67,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group col-md-3">
-                        <input type="hidden" name="id_rol" value="3">
-                    </div>
+                    
                     <div class="form-group col-md-3">
                         <label for="estado">Estado</label>
                         <select name="estado" class="form-control" required>

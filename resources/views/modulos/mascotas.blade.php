@@ -20,7 +20,6 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Nombre</th>
                             <th>Dueño</th>
                             <th>DNI Dueño</th>
@@ -33,7 +32,6 @@
                     <tbody>
                         @forelse ($mascotas as $mascota)
                         <tr>
-                            <td>{{ $mascota->id }}</td>
                             <td>{{ $mascota->nombre }}</td>
                             <td>{{ $mascota->cliente->nombre }} {{ $mascota->cliente->apellido }}</td>
                             <td>{{ $mascota->cliente->dni }}</td>

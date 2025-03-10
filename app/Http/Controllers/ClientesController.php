@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\Moneda;
+use App\Models\Nacionalidad;
 use Illuminate\Support\Facades\Auth;
 
 class ClientesController extends Controller
@@ -18,7 +19,8 @@ class ClientesController extends Controller
     public function create()
     {
         $monedas = Moneda::all();
-        return view('modulos.create_cliente', compact('monedas'));
+        $nacionalidades = Nacionalidad::all();
+        return view('modulos.create_cliente', compact('monedas'), compact('nacionalidades'));
     }
 
     public function store(Request $request)
@@ -47,7 +49,8 @@ class ClientesController extends Controller
     {
         $cliente = Cliente::findOrFail($id);
         $monedas = Moneda::all();
-        return view('modulos.edit_cliente', compact('cliente', 'monedas'));
+        $nacionalidades = Nacionalidad::all();
+        return view('modulos.edit_cliente', compact('cliente', 'monedas', 'nacionalidades'));
     }
 
     public function update(Request $request, $id)
