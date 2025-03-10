@@ -49,9 +49,7 @@ Route::put('/Mascotas/{id}', [MascotasController::class, 'update'])->name('masco
 Route::delete('/Mascotas/{id}', [MascotasController::class, 'destroy'])->name('mascotas.destroy');
 Route::get('/Mascotas/buscar-cliente', [MascotasController::class, 'buscarCliente'])->name('mascotas.buscarCliente');
 
-Route::get('/Proveedores', function () {
-    return view('modulos.proveedores');
-})->name('proveedores');
+
 
 Route::get('/Veterinarios', function () {
     return view('modulos.veterinarios');
@@ -123,3 +121,8 @@ Route::resource('monedas', MonedaController::class)->only(['store', 'destroy']);
 Route::resource('roles', RolController::class)->only(['store', 'destroy']);
 Route::resource('departamentos', DepartamentoController::class)->only(['store', 'destroy']);
 Route::resource('empleados', EmpleadosController::class);
+
+use App\Http\Controllers\ProveedoresController;
+
+Route::resource('proveedores', ProveedoresController::class);
+Route::get('/Proveedores', [ProveedoresController::class, 'index'])->name('proveedores');

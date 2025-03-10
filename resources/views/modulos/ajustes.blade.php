@@ -55,7 +55,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-
+                            
                                 <div class="col-md-4">
                                     <h2>Zona Horaria</h2>
                                     <select class="form-control" name="zona_horaria" required>
@@ -96,6 +96,7 @@
                                 </div>
                             </div>
                         </form>
+                        <br>
                         <table class="table table-bordered table-striped mt-3">
                             <thead>
                                 <tr>
@@ -138,6 +139,7 @@
                                 </div>
                             </div>
                         </form>
+                        <br>
                         <table class="table table-bordered table-striped mt-3">
                             <thead>
                                 <tr>
@@ -178,6 +180,7 @@
                                 </div>
                             </div>
                         </form>
+                        <br>
                         <table class="table table-bordered table-striped mt-3">
                             <thead>
                                 <tr>
