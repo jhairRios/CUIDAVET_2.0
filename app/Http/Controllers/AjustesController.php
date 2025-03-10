@@ -7,6 +7,7 @@ use App\Models\Ajustes;
 use App\Models\Moneda;
 use App\Models\Departamento;
 use App\Models\Rol;
+use App\Models\Nacionalidad;
 
 class AjustesController extends Controller
 {
@@ -16,7 +17,8 @@ class AjustesController extends Controller
         $monedas = Moneda::all();
         $departamentos = Departamento::all();
         $roles = Rol::all();
-        return view('modulos.ajustes', compact('ajustes', 'monedas', 'departamentos', 'roles'));
+        $nacionalidades = Nacionalidad::all();
+        return view('modulos.ajustes', compact('ajustes', 'monedas', 'departamentos', 'roles', 'nacionalidades'));
     }
 
     public function update(Request $request, $id)
