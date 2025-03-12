@@ -9,9 +9,7 @@ class Nacionalidad extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'nombre',
-    ];
+    protected $fillable = ['nombre'];
 
-    protected $table = 'nacionalidades'; // Asegúrate de que el nombre de la tabla sea correcto
+    protected $table = 'nacionalidades'; // Especificar el nombre correcto de la tabla
 }

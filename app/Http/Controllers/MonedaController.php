@@ -20,6 +20,12 @@ class MonedaController extends Controller
         return redirect()->route('ajustes.index')->with('success', 'Moneda creada exitosamente.');
     }
 
+    public function edit($id)
+    {
+        $moneda = Moneda::findOrFail($id);
+        return view('modulos.editar_moneda', compact('moneda'));
+    }
+
     public function destroy($id)
     {
         $moneda = Moneda::find($id);

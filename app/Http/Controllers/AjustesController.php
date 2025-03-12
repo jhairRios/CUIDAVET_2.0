@@ -8,6 +8,7 @@ use App\Models\Moneda;
 use App\Models\Departamento;
 use App\Models\Rol;
 use App\Models\Nacionalidad;
+use App\Models\Servicio;
 
 class AjustesController extends Controller
 {
@@ -18,7 +19,8 @@ class AjustesController extends Controller
         $departamentos = Departamento::all();
         $roles = Rol::all();
         $nacionalidades = Nacionalidad::all();
-        return view('modulos.ajustes', compact('ajustes', 'monedas', 'departamentos', 'roles', 'nacionalidades'));
+        $servicios = Servicio::all();
+        return view('modulos.ajustes', compact('ajustes', 'monedas', 'departamentos', 'roles', 'nacionalidades', 'servicios'));
     }
 
     public function update(Request $request, $id)

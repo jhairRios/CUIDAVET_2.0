@@ -119,12 +119,13 @@
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger">Eliminar</button>
                                                 </form>
+                                                <a href="{{ route('monedas.edit', $moneda->id) }}" class="btn btn-warning">Editar</a>
                                             </td>
                                         </tr>
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="2">No se encontraron monedas.</td>
+                                        <td colspan="3">No se encontraron monedas.</td>
                                     </tr>
                                 @endif
                                 
@@ -166,6 +167,7 @@
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger">Eliminar</button>
                                                 </form>
+                                                <a href="{{ route('roles.edit', $rol->id) }}" class="btn btn-warning">Editar</a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -213,6 +215,7 @@
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger">Eliminar</button>
                                                 </form>
+                                                <a href="{{ route('departamentos.edit', $departamento->id) }}" class="btn btn-warning">Editar</a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -261,12 +264,60 @@
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger">Eliminar</button>
                                                 </form>
+                                                <a href="{{ route('nacionalidades.edit', $nacionalidad->id) }}" class="btn btn-warning">Editar</a>
                                             </td>
                                         </tr>
                                     @endforeach
                                 @else
                                     <tr>
                                         <td colspan="2">No se encontraron nacionalidades.</td>
+                                    </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                <hr>
+                    <!-- Sección para Servicios -->
+                    <div class="section">
+                        <h2>Servicios</h2>
+                        <form action="{{ route('servicios.store') }}" method="POST">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="nombre" placeholder="Nombre del servicio" required>
+                                </div>
+                                <div class="col-md-4 text-right">
+                                    <br>
+                                    <button type="submit" class="btn btn-primary">Agregar Servicio</button>
+                                </div>
+                            </div>
+                        </form>
+                        <br>
+                        <table class="table table-bordered table-striped mt-3">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if(isset($servicios) && count($servicios) > 0)
+                                    @foreach($servicios as $servicio)
+                                        <tr>
+                                            <td>{{ $servicio->nombre }}</td>
+                                            <td>
+                                                <form action="{{ route('servicios.destroy', $servicio->id) }}" method="POST" style="display:inline-block;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                </form>
+                                                <a href="{{ route('servicios.edit', $servicio->id) }}" class="btn btn-warning">Editar</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <tr>
+                                        <td colspan="2">No se encontraron servicios.</td>
                                     </tr>
                                 @endif
                             </tbody>

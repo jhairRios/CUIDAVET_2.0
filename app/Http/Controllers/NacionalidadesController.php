@@ -7,64 +7,52 @@ use App\Models\Nacionalidad;
 
 class NacionalidadesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $nacionalidades = Nacionalidad::all();
+        return view('modulos.ajustes', compact('nacionalidades'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required',
+            'nombre' => 'required|string|max:255',
         ]);
 
         Nacionalidad::create($request->all());
 
-        return redirect()->route('ajustes.index')->with('success', 'Nacionalidad creada exitosamente.');
+        return redirect()->route('ajustes.index')->with('success', 'Nacionalidad agregada exitosamente.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $nacionalidad = Nacionalidad::findOrFail($id);
+        return view('modulos.editar_nacionalidad', compact('nacionalidad'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+        ]);
+
+        $nacionalidad = Nacionalidad::findOrFail($id);
+        $nacionalidad->update($request->all());
+
+        return redirect()->route('ajustes.index')->with('success', 'Nacionalidad actualizada exitosamente.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         $nacionalidad = Nacionalidad::findOrFail($id);
         $nacionalidad->delete();
