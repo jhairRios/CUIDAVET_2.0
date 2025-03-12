@@ -116,7 +116,7 @@ Route::get('/Inicio', function () {
 })->name('Inicio');
 
 Route::resource('nacionalidades', NacionalidadesController::class)->only(['store', 'destroy']);
-Route::resource('monedas', MonedaController::class)->only(['store', 'destroy']);
+Route::resource('monedas', MonedaController::class);
 Route::resource('roles', RolController::class)->only(['store', 'destroy']);
 Route::resource('departamentos', DepartamentoController::class)->only(['store', 'destroy']);
 Route::resource('empleados', EmpleadosController::class);
