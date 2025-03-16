@@ -78,9 +78,9 @@ Route::get('/Categorias/{id}/edit', [CategoriasController::class, 'edit'])->name
 Route::put('/Categorias/{id}', [CategoriasController::class, 'update'])->name('categorias.update');
 Route::delete('/Categorias/{id}', [CategoriasController::class, 'destroy'])->name('categorias.destroy');
 
-Route::get('/GestorProductos', function () {
-    return view('modulos.gestor_productos');
-})->name('GestorProductos');
+use App\Http\Controllers\ProductoController;
+
+Route::get('/GestorProductos', [ProductoController::class, 'index'])->name('productos.index');
 
 Route::get('/Inventario', function () {
     return view('modulos.inventario');
@@ -131,5 +131,6 @@ use App\Http\Controllers\ServicioController;
 
 Route::resource('servicios', ServicioController::class);
 
+Route::resource('productos', ProductoController::class);
 
 Route::resource('veterinarios', VeterinarioController::class);
