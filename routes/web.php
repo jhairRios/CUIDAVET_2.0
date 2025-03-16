@@ -50,9 +50,9 @@ Route::put('/Mascotas/{id}', [MascotasController::class, 'update'])->name('masco
 Route::delete('/Mascotas/{id}', [MascotasController::class, 'destroy'])->name('mascotas.destroy');
 Route::get('/Mascotas/buscar-cliente', [MascotasController::class, 'buscarCliente'])->name('mascotas.buscarCliente');
 
-Route::get('/Veterinarios', function () {
-    return view('modulos.veterinarios');
-})->name('Veterinarios');
+use App\Http\Controllers\VeterinarioController;
+
+Route::get('/Veterinarios', [VeterinarioController::class, 'index'])->name('Veterinarios');
 
 Route::get('/Citas', function () {
     return view('modulos.citas');
@@ -130,3 +130,6 @@ Route::get('/Proveedores', [ProveedoresController::class, 'index'])->name('prove
 use App\Http\Controllers\ServicioController;
 
 Route::resource('servicios', ServicioController::class);
+
+
+Route::resource('veterinarios', VeterinarioController::class);
