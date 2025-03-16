@@ -82,9 +82,9 @@ use App\Http\Controllers\ProductoController;
 
 Route::get('/GestorProductos', [ProductoController::class, 'index'])->name('productos.index');
 
-Route::get('/Inventario', function () {
-    return view('modulos.inventario');
-})->name('Inventario');
+use App\Http\Controllers\InventarioController;
+
+Route::get('/Inventario', [InventarioController::class, 'index'])->name('inventario.index');
 
 Route::get('/Compras', function () {
     return view('modulos.compras');
