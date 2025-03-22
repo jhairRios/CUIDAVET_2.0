@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('ajustes', function (Blueprint $table) {
             $table->id();
+            $table->string('logo', 255)->nullable();
+            $table->string('telefono', 20);
+            $table->string('direccion', 255);
+            $table->unsignedBigInteger('id_moneda')->default(1);
+            $table->string('zona_horaria', 255);
+            $table->string('rtn', 50);
             $table->timestamps();
+
+            $table->foreign('id_moneda')->references('id')->on('monedas')->constrained();
         });
     }
 

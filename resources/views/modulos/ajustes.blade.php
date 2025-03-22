@@ -37,14 +37,7 @@
                                 <h2>Telefono</h2>
                                 <input type="text" class="form-control" name="telefono" required
                                 data-inputmask="'mask': '+(999) 9999-9999'" data-mask value="{{$ajustes->telefono}}">
-                            </div>
-
-                            <div class="col-md-3">
-                                <h2>Direccion</h2>
-                                <input type="text" class="form-control" name="direccion" required value="{{$ajustes->direccion}}">
-                            </div>
-
-                            <div class="col-md-3">
+                            </div> <div class="col-md-3">
                                 <h2>Moneda</h2>
                                 <select class="form-control" name="id_moneda" required>
                                     @foreach($monedas as $moneda)
@@ -55,6 +48,11 @@
                                 </select>
                             </div>
                         
+                            <div class="col-md-3">
+                                <h2>RTN</h2>
+                                <input type="text" class="form-control" name="rtn" required value="{{ $ajustes->rtn }}">
+                            </div>
+
                             <div class="col-md-4">
                                 <h2>Zona Horaria</h2>
                                 <select class="form-control" name="zona_horaria" required>
@@ -67,6 +65,13 @@
                                 </select>
                             </div>
 
+                            <div class="col-md-8">
+                                <h2>Direccion</h2>
+                                <input type="text" class="form-control" name="direccion" required value="{{$ajustes->direccion}}">
+                            </div>
+
+                           
+                                
                             <div class="col-md-12 text-right">
                                 <br>
                                 <button type="submit" class="btn btn-primary">Guardar</button>
