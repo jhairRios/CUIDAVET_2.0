@@ -118,6 +118,7 @@ Route::get('/Inicio', function () {
 Route::resource('nacionalidades', NacionalidadesController::class)->only(['store', 'destroy']);
 Route::resource('nacionalidades', NacionalidadesController::class);
 Route::resource('monedas', MonedaController::class);
+Route::get('/monedas', [App\Http\Controllers\MonedaController::class, 'index'])->name('monedas.index');
 Route::resource('roles', 'App\Http\Controllers\RolController');
 Route::resource('departamentos', DepartamentoController::class);
 Route::resource('empleados', EmpleadosController::class);
