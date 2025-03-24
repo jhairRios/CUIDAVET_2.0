@@ -52,8 +52,10 @@
                             <input type="file" class="form-control" name="logo">
                             <br>
                             @if($ajustes->logo)
-                                <img src="{{ asset('storage/' . $ajustes->logo) }}" width="150px" alt="Imagen actual">
+                                <!-- Mostrar el logo actual desde la carpeta public/dist/img/ -->
+                                <img src="{{ asset('storage/' . $ajustes->imagen) }}" width="150px" alt="Imagen actual">
                             @else
+                                <!-- Mostrar la imagen por defecto si no hay logo -->
                                 <img src="{{ asset('dist/img/logo.png') }}" width="150px" alt="Imagen por defecto">
                             @endif
                         </div>
